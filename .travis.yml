@@ -1,3 +1,39 @@
+language: node_js
+services:
+  - docker
 before_install:
-- openssl aes-256-cbc -K $encrypted_087df7818a08_key -iv $encrypted_087df7818a08_iv
-  -in llavehlc.enc -out llavehlc -d
+  - openssl aes-256-cbc -K $encrypted_087df7818a08_key -iv $encrypted_087df7818a08_iv
+    -in llavehlc.enc -out llavehlc -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 ./llavehlc
+  - echo -e "Host 51.210.103.111\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - ssh-add ./llavehlc
+  - echo $DOCKER_PASSWORD | docker login -u nicolasfj -p "$DOCKER_PASSWORD"
+node_js: 14
+branches:
+  only:
+    - master
+cache:
+  directories:
+    - node_modules
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  local_dir: public
+  keep-history: true
+  on:
+    branch: master
+before_script:
+  - "npm i -g gatsby"
+  - "npm i"
+  - "npm install -g jest-cli"
+script:
+  - "npm test"
+  - docker build -t front
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker tag front $DOCKER_USER/fornt:$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_USER/front:$TRAVIS_BUILD_NUMBER
+  - docker tag front $DOCKER_USER/front:latest
+  - docker push $DOCKER_USER/front:latest

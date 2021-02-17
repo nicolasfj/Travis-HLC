@@ -1,0 +1,7 @@
+version = "3.0"
+
+services: 
+ front:
+  image: nicolasfj/myplace:gatsbyhlc
+  ports:
+   - 9000:80
