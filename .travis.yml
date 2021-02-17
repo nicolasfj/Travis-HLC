@@ -1,0 +1,3 @@
+before_install:
+- openssl aes-256-cbc -K $encrypted_087df7818a08_key -iv $encrypted_087df7818a08_iv
+  -in llavehlc.enc -out llavehlc -d
