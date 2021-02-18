@@ -24,8 +24,10 @@ deploy:
   keep-history: true
   on:
     branch: master
-before_script:	
-  - "npm i -g gatsby"
+before_script:
+  - "npm i"	
+  - "npm install -g gatsby"
+  -npm install -g jest-cli"
 script:
   - "sudo npm run test"
   - docker build -t front
