@@ -26,9 +26,6 @@ deploy:
     branch: master
 before_script:	
   - "npm i -g gatsby"
-  - "npm i"
-  - "npm ci"
-  - "npm install -g jest-cli"
 script:
   - "sudo npm run test"
   - docker build -t front
