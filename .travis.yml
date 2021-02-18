@@ -34,3 +34,11 @@ script:
   - docker push nicolasfj/myplace:gatsbyhlc
 after_success:
   - docker-compose up
+notifications:
+  email:
+    recipients:
+      - nferjim1211.alumnado@politecnicomalaga.com
+      - ale.pj01@hotmail.com
+      - pabloo150799@gmail.com
+    on_success: always
+    on_failure: always
