@@ -26,7 +26,7 @@ deploy:
     branch: master
 before_script:
   - "npm i"	
-  - "npm install -g gatsby"
+  - "npm install -g gatsby-cli"
   - "npm install -g jest-cli"
 script:
   - "sudo npm run test"
