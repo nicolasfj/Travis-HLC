@@ -30,7 +30,7 @@ before_script:
   - "npm install -g jest-cli"
 script:
   - "npm test"
-  - docker build -t front
+  - docker build -t nicolasfj/myplace:gatsbyhlc
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker tag front $DOCKER_USER/fornt:$TRAVIS_BUILD_NUMBER
