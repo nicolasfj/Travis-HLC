@@ -4,6 +4,8 @@ WORKDIR /home/src/app
 
 COPY package.json .
 
+RUN npm ci
+
 RUN npm i
 
 RUN npm install -g gatsby-cli
