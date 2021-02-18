@@ -3,5 +3,6 @@ version = "3.0"
 services: 
  front:
   image: nicolasfj/myplace:gatsbyhlc
+  container_name: myplaces
   ports:
    - 9000:80
