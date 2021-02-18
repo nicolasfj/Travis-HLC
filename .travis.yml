@@ -31,9 +31,6 @@ before_script:
 script:
   - "npm test"
   - docker build -t nicolasfj/myplace:gatsbyhlc .
+  - docker push nicolasfj/myplace:gatsbyhlc
 after_success:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker tag front $DOCKER_USER/front:$TRAVIS_BUILD_NUMBER
-  - docker push $DOCKER_USER/front:$TRAVIS_BUILD_NUMBER
-  - docker tag front $DOCKER_USER/front:latest
-  - docker push $DOCKER_USER/front:latest
+  - docker-compose up
