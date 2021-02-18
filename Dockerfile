@@ -12,4 +12,4 @@ COPY gatsby-config.js .
 
 EXPOSE 9000
 
-CMD ["gatsby", "develop", "-H", "0.0.0.0", "-p", "9500"]
+CMD ["gatsby", "develop", "-H", "0.0.0.0"]
