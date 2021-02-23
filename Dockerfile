@@ -16,4 +16,4 @@ COPY gatsby-config.js .
 
 EXPOSE 9000
 
-CMD ["gatsby", "develop", "-H", "0.0.0.0"]
+ENTRYPOINT ["gatsby", "develop", "-H", "0.0.0.0"]
